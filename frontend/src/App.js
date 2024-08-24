@@ -1,37 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 import axios from 'axios'
 import React from 'react'
-
-class App extends React.Component {
-  state = {details: [], }
-
-  componentDidMount() {
-    let data;
-    axios.get('http://localhost:8000')
-    .then(res => {
-      data = res.data;
-      this.setState({
-        details: data
-      });
-    })
-    .catch(err => { })
-  }
-  render() {
-    return (
-      <div>
-        <header>Data Generated From Django</header>
+import Typography from '@mui/material/Typography';
+import RecipeList from './components/RecipeList.js'
+import ChatWindowComponent from './components/ChatWindowComponent.js';
+function App() {
+  
+  return (
+    <div>
+      <div className='main-body'>
+        <Typography variant="h2">Recipes</Typography>
         <hr></hr>
-        {this.state.details.map((output, id) => (
-          <div key={id}>
-            <div>
-              <h2>{output.name}</h2>
-              <h2>{output.description}</h2>
-            </div>
-          </div>
-        ))}
+        <RecipeList/>
+        <Typography variant="h4">KangaBot</Typography>
+        <ChatWindowComponent/>
       </div>
-    )
-  }
+    </div>
+  )
 }
 export default App;

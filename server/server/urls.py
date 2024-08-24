@@ -22,5 +22,6 @@ from app.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', RecipeView.as_view(), name="recipes")
+    path('recipes/', RecipeView.as_view(), name="recipes"),
+    path('chatbot/', ai_assistant, name='ai_assistant')
 ]
